@@ -1,0 +1,231 @@
+:root {
+  --pink: #f6b1c3;
+  --rose: #f9c5d1;
+  --peach: #ffd6a5;
+  --lavender: #d8c7ff;
+  --mint: #b9f3e4;
+  --sky: #cde7ff;
+  --cream: #fff7ef;
+
+  --text-main: #2b2b2b;
+  --text-muted: #777;
+
+  --radius: 22px;
+  --shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  --glow: 0 0 30px rgba(246, 177, 195, 0.6);
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  color: var(--text-main);
+  line-height: 1.8;
+
+  background:
+    radial-gradient(circle at 10% 20%, var(--rose), transparent 40%),
+    radial-gradient(circle at 90% 10%, var(--lavender), transparent 45%),
+    radial-gradient(circle at 50% 90%, var(--mint), transparent 50%),
+    linear-gradient(120deg, #fff, var(--cream));
+  background-attachment: fixed;
+}
+
+/* FLOATING HEARTS */
+body::before,
+body::after {
+  content: "♡ ♡ ♡ ♡ ♡";
+  position: fixed;
+  font-size: 2rem;
+  opacity: 0.08;
+  animation: floatHearts 18s linear infinite;
+  pointer-events: none;
+}
+
+body::after {
+  bottom: -10%;
+  right: 5%;
+  animation-duration: 25s;
+}
+
+@keyframes floatHearts {
+  from { transform: translateY(120vh); }
+  to { transform: translateY(-120vh); }
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 5rem 1.5rem 4rem;
+  position: relative;
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 6vw, 3.8rem);
+  background: linear-gradient(45deg, var(--pink), var(--lavender), var(--peach));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: var(--glow);
+  animation: titlePulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes titlePulse {
+  from { letter-spacing: 2px; }
+  to { letter-spacing: 5px; }
+}
+
+header p {
+  margin-top: 1rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+/* SECTIONS */
+section {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 3.5rem 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  animation: fadeUp 1.2s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ABOUT */
+.about h2 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.about h2::after {
+  content: "✿ ✿ ✿";
+  display: block;
+  margin-top: 0.6rem;
+  color: var(--pink);
+}
+
+.about p {
+  color: var(--text-muted);
+}
+
+/* REASONS */
+.reasons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.6rem;
+}
+
+.reason-card {
+  padding: 1.7rem;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, #fff, var(--cream));
+  box-shadow: var(--shadow);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: 0.4s ease;
+}
+
+.reason-card::before {
+  content: "♡";
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.2rem;
+  color: var(--pink);
+}
+
+.reason-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: var(--glow);
+}
+
+/* GALLERY */
+.gallery {
+  display: flex;
+  justify-content: center;
+}
+
+.gallery .card {
+  background: linear-gradient(135deg, #fff, var(--sky));
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.gallery img {
+  max-width: 200px;
+  width: 100%;
+  border-radius: 18px;
+  margin: 0.5rem;
+  transition: 0.5s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.12) rotate(-2deg);
+  box-shadow: 0 20px 40px rgba(216,199,255,0.6);
+}
+
+.gallery p {
+  margin-top: 1.2rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+/* LOVE NOTE */
+.note {
+  background: linear-gradient(
+    135deg,
+    var(--pink),
+    var(--lavender),
+    var(--mint)
+  );
+  color: white;
+  text-align: center;
+  box-shadow: var(--glow);
+}
+
+.note p {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+}
+
+.note p::before,
+.note p::after {
+  content: "♡";
+  margin: 0 0.6rem;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 3rem 1rem 4rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  section {
+    padding: 2.4rem 1.4rem;
+  }
+
+  header {
+    padding-top: 4rem;
+  }
+} 
